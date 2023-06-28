@@ -194,7 +194,7 @@ footer nav ul {
 	margin: 50px;	
 }
 
-.filter button {
+.filter-btn {
 	height: 2.5em;
 	min-width: 7em;
 	background-color: white;
@@ -206,7 +206,11 @@ footer nav ul {
 	padding: 0 10px;
 }
 
-#btn-0 {
+.filter-btn:hover {
+	cursor: pointer;
+}
+
+.active-filter {
 	color: white;
 	background-color: #1D6154;
 }
