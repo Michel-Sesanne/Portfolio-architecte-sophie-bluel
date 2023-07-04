@@ -205,7 +205,7 @@ footer nav ul {
 	padding: 0 10px;
 }
 
-.filter-btn:hover {
+button:hover {
 	cursor: pointer;
 }
 
@@ -292,3 +292,72 @@ b {
 	margin-top: calc((100vh - 620px) * 0.3 - 50px);
 	margin-bottom: calc((100vh - 620px) * 0.7);
 }
+
+/****************** Accueil administrateur *****************************/
+.admin-bar {
+	width: 100vw;
+	height: 59px;
+	background-color: black;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.header {
+	margin-top: 109px;
+}
+
+.white {
+	color: white;
+	font-size: 1.2em;
+}
+
+.admin-bar p {
+	margin: 0 21px 0 9px;
+}
+
+#edition-btn {
+	border-radius: 60px;
+	background-color: white;
+	width: 15.43em;
+	height: 2.71em;
+	font-weight: 500;
+	font-family: Work Sans;
+	color: black;
+	border: none;
+}
+
+.undisplay {
+	display: none;
+}
+
+.modifier {
+	display: inline-flex;
+	gap: 8px;
+	margin: 13px 10%;
+	height: 1.3em;
+	line-height: 1.3em;
+	text-align: center;
+}
+.modifier i {
+	font-size: 1.3em;
+}
+.modifier:hover {
+	cursor: pointer;
+}
+
+.titreProjets {
+	display: flex;
+	align-items: center;
+	margin: 62px;
+	padding-left: 28.61vw;
+}
+
+.titreProjets h2 {
+	margin-top: 1em;	/* Pour compenser la margin-bottom de #portfolio h2 */
+}
+
+
