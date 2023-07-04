@@ -18,7 +18,7 @@ formulaireLogIn.addEventListener("submit", (event) => {
     if (response.ok) {
       const data = await response.json();
       const userToken = data.token;
-      localStorage.setItem("token", userToken);
+      window.localStorage.setItem("token", userToken);
       
       window.location.href = "index.html";
     }else{
