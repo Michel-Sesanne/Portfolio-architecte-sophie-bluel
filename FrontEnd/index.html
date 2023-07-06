@@ -12,11 +12,10 @@
 	<script src="accueil.js" defer></script>
 	<script src="https://kit.fontawesome.com/02a27855e5.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 <header>
-	<a href="index.html">
-		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	</a>	
+	<a href="index.html"><h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a>	
 	<nav>
 		<ul>
 			<li><a href="#portfolio">projets</a></li>
@@ -26,10 +25,12 @@
 		</ul>
 	</nav>
 </header>
+
 <main>
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
+			<a href="#" class="undisplay"><i class="fa-regular fa-pen-to-square"></i><p>modifier</p></a>
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -38,11 +39,23 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
-	<section id="portfolio">
-		<h2>Mes Projets</h2>	
+
+	<section id="portfolio">		
+		<div class="titreProjets">
+			<h2>Mes Projets</h2>
+			<a href="#modal" class="undisplay"><i class="fa-regular fa-pen-to-square"></i><p>modifier</p></a>			
+		</div>
+		<aside id="modal" class="modal" style="display: none;">
+			<div class="modal-wrapper">
+				<span class="modal-close">&times;</span>
+				<h3>Galerie photo</h3>
+			</div>
+		</aside>
+		<script src="modale.js"></script>
 		<div class="filter"></div>
 		<div class="gallery"></div>
 	</section>
+
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>

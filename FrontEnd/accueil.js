@@ -108,6 +108,11 @@ if(window.localStorage.getItem("token")) {
     filtre.classList.add("undisplay");
 
     //Ajout visuel option "modifier"
+    const modifierIntro = document.querySelector(".undisplay");
+    modifierIntro.className = "modifier";
+    const modifierProjets = document.querySelector(".undisplay");
+    modifierProjets.className = "modifier";
+    /*Ajout visuel option "modifier"
     const modifierElement = document.createElement("div");    
     const iconeModifier = document.createElement("i");
     const texteModifier = document.createElement("p");
@@ -135,5 +140,5 @@ if(window.localStorage.getItem("token")) {
     modifierElementBis.setAttribute("onclick", "modifierProjets()");
     titreProjetsElement.appendChild(titreMesProjets);    
     titreProjetsElement.appendChild(modifierElementBis);   
-    
+   */ 
 };

@@ -22,7 +22,8 @@ formulaireLogIn.addEventListener("submit", (event) => {
       
       window.location.href = "index.html";
     }else{
-      alert("Erreur dans l’identifiant ou le mot de passe");
+      const erreurLogin = document.querySelector(".login-error");
+      erreurLogin.innerText= "Erreur dans l’identifiant ou le mot de passe";      alert
     }
   })
   .catch(error => {
