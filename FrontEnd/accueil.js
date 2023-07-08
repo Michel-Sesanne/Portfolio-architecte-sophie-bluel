@@ -42,7 +42,7 @@
             });
         }
         //Mise en évidence du filtre actif
-        const filtres = document.querySelectorAll("button");
+        const filtres = document.querySelectorAll(".filter-btn");
         filtres[0].classList.add("active-filter"); // "Tous" par défaut
         for (const filtre of filtres) {
             filtre.addEventListener("click", () => {
@@ -53,13 +53,14 @@
             });
         };        
     } catch (error) {
-        alert(error);
+        console.log(error);
     }
 })();
 
 function afficherProjets(liste, galerie) {    
     for (let i = 0; i < liste.length; i++) {
         const projet = document.createElement("figure");
+        projet.className = `projet-${liste[i].id}`;
         galerie.appendChild(projet);
 
         const imageElement = document.createElement("img");
@@ -111,34 +112,5 @@ if(window.localStorage.getItem("token")) {
     const modifierIntro = document.querySelector(".undisplay");
     modifierIntro.className = "modifier";
     const modifierProjets = document.querySelector(".undisplay");
-    modifierProjets.className = "modifier";
-    /*Ajout visuel option "modifier"
-    const modifierElement = document.createElement("div");    
-    const iconeModifier = document.createElement("i");
-    const texteModifier = document.createElement("p");
-    modifierElement.className = "modifier";
-    modifierElement.setAttribute("onclick", "modifierIntro()");
-    iconeModifier.className = "fa-regular fa-pen-to-square black";
-    texteModifier.innerText = "modifier";
-    modifierElement.appendChild(iconeModifier);
-    modifierElement.appendChild(texteModifier);
-
-
-        //sous la photo d'introduction
-    const modifierIntro = document.createElement("div");
-    modifierIntro.appendChild(modifierElement);
-    const figureIntro = document.querySelector("figure");
-    figureIntro.appendChild(modifierIntro);
-
-        //à côté du titre "Mes projets"
-    const titreProjetsElement = document.createElement("div");
-    titreProjetsElement.className = "titreProjets";
-    const portfolioElement = document.getElementById("portfolio");
-    const titreMesProjets = document.querySelector("#portfolio h2");
-    portfolioElement.insertBefore(titreProjetsElement, titreMesProjets);    
-    const modifierElementBis = modifierElement.cloneNode(true);
-    modifierElementBis.setAttribute("onclick", "modifierProjets()");
-    titreProjetsElement.appendChild(titreMesProjets);    
-    titreProjetsElement.appendChild(modifierElementBis);   
-   */ 
+    modifierProjets.className = "modifier";    
 };

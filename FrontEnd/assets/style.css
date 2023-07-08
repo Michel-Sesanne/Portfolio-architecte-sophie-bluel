@@ -381,7 +381,7 @@ b {
 	width: 630px;
 	border-radius: 10px;
 	max-width: calc(100vw - 20px);
-	max-height: calc(100vh - 20px);
+	max-height: 90vh;
 	padding: 15px 30px;
 	background-color: #FFF;
 	text-align: center;
@@ -401,4 +401,87 @@ b {
 h3 {
 	font-size: 26px;
 	margin: 45px auto;
+}
+
+.modal-gallery {
+	width: 67%;
+	margin: auto;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;	
+}
+
+.modal-gallery img {
+	width: calc(100% - (36px / 5));
+	margin-bottom: 5px;
+}
+
+.modal-separation {
+	border: 1px solid #B3B3B3;
+	width: 67%;
+	margin: 5% auto;
+}
+
+.modal-btn {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	width: 237px;
+	height: 36px;
+	border: none;
+	text-align: center;
+	border-radius: 60px ;
+}
+
+.delete-gallery {
+	color: #D65353;
+	font-family: 'Syne';
+	margin: 23px 0 33px;
+}
+
+#modal figure {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: 10px;
+	position: relative;
+}
+
+.fa-icon {
+	--fa-display: flex;
+  }
+
+.fa-trash-can {
+	color: white;
+	background-color: black;
+	font-size: 9px;
+	width: 17px;
+	height: 17px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 2px;
+	position: absolute;
+	top: 5px;
+	right: 12px;
+}
+
+.fa-arrows-up-down-left-right {
+	color: white;
+	background-color: black;
+	font-size: 9px;
+	width: 17px;
+	height: 17px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 2px;
+	position: absolute;
+	top: 5px;
+	right: 32px;
+}
+
+.fa-trash-can:hover, .fa-arrows-up-down-left-right:hover {
+	cursor: pointer;
 }

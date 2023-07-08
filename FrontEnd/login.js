@@ -1,11 +1,11 @@
 const formulaireLogIn = document.querySelector("form");
 
-formulaireLogIn.addEventListener("submit", (event) => {
-  event.preventDefault();
+formulaireLogIn.addEventListener("submit", (e) => {
+  e.preventDefault();
 
   const logIn = {
-    email: event.target.querySelector("#email").value,
-    password: event.target.querySelector("#password").value,
+    email: e.target.querySelector("#email").value,
+    password: e.target.querySelector("#password").value,
   };
   const chargeUtile = JSON.stringify(logIn);
 
@@ -23,7 +23,7 @@ formulaireLogIn.addEventListener("submit", (event) => {
       window.location.href = "index.html";
     }else{
       const erreurLogin = document.querySelector(".login-error");
-      erreurLogin.innerText= "Erreur dans l’identifiant ou le mot de passe";      alert
+      erreurLogin.innerText= "Erreur dans l’identifiant ou le mot de passe";
     }
   })
   .catch(error => {
