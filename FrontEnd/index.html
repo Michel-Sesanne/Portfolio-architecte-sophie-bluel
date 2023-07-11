@@ -48,12 +48,40 @@
 		</div>
 		<aside id="modal" class="modal" style="display: none;">
 			<div class="modal-wrapper">
+				<i class="fa-solid fa-arrow-left hide"></i>
 				<span class="modal-close">&times;</span>
-				<h3>Galerie photo</h3>
-				<div class="modal-gallery"></div>
-				<div class="modal-separation"></div>
-				<button class="modal-btn">Ajouter une photo</button>
-				<p class="delete-gallery">Supprimer la galerie</p>
+
+				<article class="modal-home">
+					<h3>Galerie photo</h3>
+					<div class="modal-gallery"></div>
+					<div class="modal-separation"></div>
+					<button class="modal-btn switch">Ajouter une photo</button>
+					<p class="delete-gallery">Supprimer la galerie</p>
+				</article>
+
+				<article class="modal-add undisplay">
+					<h3>Ajout photo</h3>
+					<p class="error-message"></p>
+					
+					<form class="add-work-form" action="http://localhost:5678/api/works" method="post" enctype="multipart/form-data">
+						<div class="add-photo">
+							<div class="photo-preview"></div>
+							<i class="fa-sharp fa-regular fa-image"></i>
+							<label for="photo-upload" id="photo-upload-btn">+ Ajouter photo</label>
+							<input type="file" id="photo-upload" accept="image/jpeg, image/png" style="display: none;" required>
+							<p>jpg, png : 4mo max</p>
+						</div>
+						<label for="titre">Titre</label>
+						<input type="text" name="titre" id="titre" required>
+						<label for="categorie">Catégorie</label>
+						<select name="categorie" id="categorie" required>
+							<option value=""></option>
+						</select>
+						<div class="modal-separation"></div>
+						<input type="submit" value="Valider" class="modal-btn add-work-btn" style="background-color: #A7A7A7;">					
+					</form>
+
+				</article>
 			</div>
 		</aside>
 		

@@ -112,5 +112,11 @@ if(window.localStorage.getItem("token")) {
     const modifierIntro = document.querySelector(".undisplay");
     modifierIntro.className = "modifier";
     const modifierProjets = document.querySelector(".undisplay");
-    modifierProjets.className = "modifier";    
+    modifierProjets.className = "modifier";
+    
+    //Ajustement des espacements
+    document.querySelector("#introduction").querySelector("figure").style.margin = "42px 0";
+
+    const titreProjets = document.querySelector("#portfolio");
+    titreProjets.querySelector("div").className = "titreProjets";
 };
