@@ -1,3 +1,5 @@
+import { afficherProjets } from "./accueil.js";
+
 let modal = null;
 
 const openModal = (e) => {
@@ -40,22 +42,21 @@ modifierProjets.addEventListener("click", openModal);
 (async () => {
     try {
         const reponse = await fetch("http://localhost:5678/api/works");
-        const travaux = await reponse.json();
-    
-        const galerieElement = document.querySelector(".modal-gallery");
-        afficherEditionPhoto(travaux, galerieElement);
+        const travaux = await reponse.json();        
+        afficherEditionPhoto(travaux);
     } catch (error) {
         console.log(error);
     }
 })();
 
-function afficherEditionPhoto(liste, galerie) {    
+function afficherEditionPhoto(liste) {   
+    const galerieModale = document.querySelector(".modal-gallery"); 
     for (let i = 0; i < liste.length; i++) {
         const idProjet = liste[i].id;
 
         const projet = document.createElement("figure");
         projet.className = `projet-${idProjet}`;
-        galerie.appendChild(projet);
+        galerieModale.appendChild(projet);
 
         const imageElement = document.createElement("img");
         imageElement.src = liste[i].imageUrl;
@@ -69,7 +70,7 @@ function afficherEditionPhoto(liste, galerie) {
 
         const suppressionElement = document.createElement("i");
         suppressionElement.className = "fa-solid fa-trash-can";
-        suppressionElement.style.setProperty("display","flex","important");             
+        suppressionElement.style.setProperty("display","flex","important");  //Pour contrer le display inline fontawesome natif        
         suppressionElement.addEventListener("click", (e) => {
             e.preventDefault();
             supprimerProjet(e, idProjet);
@@ -103,7 +104,7 @@ async function supprimerProjet(e, id) {
             });
             openModal(e);
         }else{
-            alert("Échec de la suppression du projet");
+            console.log("Échec de la suppression du projet");
         }
     })
     .catch(error => {
@@ -111,32 +112,36 @@ async function supprimerProjet(e, id) {
     });    
 }
 
-//Pour passer de la gallerie de photo au mode "Ajout photo"
+const modaleGalerie = document.querySelector(".modal-home");
+const modaleAjoutPhoto = document.querySelector(".modal-add");
+
+const goBack = document.querySelector(".fa-arrow-left");
 const modalSwitch = document.querySelector(".switch");
+
+//Pour passer de la galerie de photo au mode "Ajout photo"
 modalSwitch.addEventListener("click", (e) => {
     e.preventDefault();
-    document.querySelector(".modal-home").classList.add("undisplay");
-    document.querySelector(".modal-add").classList.remove("undisplay");
-    document.querySelector(".fa-arrow-left").classList.remove("hide");
+    modaleGalerie.classList.add("undisplay");
+    modaleAjoutPhoto.classList.remove("undisplay");
+    goBack.classList.remove("hide");
 });
 
 //               ...et inversement
-const goBack = document.querySelector(".fa-arrow-left");
 goBack.addEventListener("click", (e) => {
     e.preventDefault();
-    document.querySelector(".modal-home").classList.remove("undisplay");
-    document.querySelector(".modal-add").classList.add("undisplay");
-    document.querySelector(".fa-arrow-left").classList.add("hide");
+    modaleGalerie.classList.remove("undisplay");
+    modaleAjoutPhoto.classList.add("undisplay");
+    goBack.classList.add("hide");
 });
 
-//Récupération de la liste des catégories pour choix du formulaire
+// Récupération de la liste des catégories pour choix du formulaire
 (async () => {
     try {
         const reponse = await fetch("http://localhost:5678/api/categories");
         const categories = await reponse.json();
     
         const selectCategorie = document.querySelector("#categorie");
-        for (i = 0; i < categories.length; i++) {
+        for (let i = 0; i < categories.length; i++) {
             const optionElement = document.createElement("option");
             optionElement.innerText = categories[i].name;
             optionElement.setAttribute("value", categories[i].id);
@@ -243,6 +248,7 @@ formulaire.addEventListener("submit", (e) => {
     formData.append("title", titre);
     formData.append("image", photoUpload.files[0]);
     formData.append("category", categorie);
+
     const bearerToken = localStorage.getItem("token");
     
     fetch("http://localhost:5678/api/works", {
@@ -251,15 +257,19 @@ formulaire.addEventListener("submit", (e) => {
         body: formData
     })
      .then(response => {
-      if (response.ok) {
-        alert("Le formulaire a été envoyé avec succès");
+      if (response.ok) {        
         return response.json();
       } else {
         afficherErreur("Erreur lors de l'envoi du formulaire.");
       }
     })
-    .then(data => {
-      console.log(data);
+    //Une fois la réponse correcte obtenue de l'API, on peut ajouter le projet au site
+    .then(data => {        
+        afficherProjets([data]);
+        afficherEditionPhoto([data]);
+        const ajoutProjetValide = '<i class="fa-solid fa-check"></i>'
+            + '<p class="add-work-checked">Projet ajouté au site !</p>';
+        modaleAjoutPhoto.innerHTML = ajoutProjetValide;
     })
     .catch(error => {
       console.error(error);

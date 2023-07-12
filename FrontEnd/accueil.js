@@ -1,12 +1,13 @@
+export { afficherProjets };
+
 (async () => {
     try {
         //Récupération dynamique des projets
         const reponse = await fetch("http://localhost:5678/api/works");
         const travaux = await reponse.json();
     
-        //Ajout des travaux à la galerie
-        const galerieElement = document.querySelector(".gallery");
-        afficherProjets(travaux, galerieElement);
+        //Ajout des travaux à la galerie        
+        afficherProjets(travaux);
     
         //Création d'un tableau des catégories sans doublon
         const categories = ["Tous"];
@@ -37,8 +38,8 @@
                 }else{
                     travauxFiltrer = travaux;
                 };
-                galerieElement.innerHTML = "";
-                afficherProjets(travauxFiltrer, galerieElement);
+                document.querySelector(".gallery").innerHTML = " ";
+                afficherProjets(travauxFiltrer);
             });
         }
         //Mise en évidence du filtre actif
@@ -57,11 +58,12 @@
     }
 })();
 
-function afficherProjets(liste, galerie) {    
+function afficherProjets(liste) {  
+    const galerieElement = document.querySelector(".gallery");  
     for (let i = 0; i < liste.length; i++) {
         const projet = document.createElement("figure");
         projet.className = `projet-${liste[i].id}`;
-        galerie.appendChild(projet);
+        galerieElement.appendChild(projet);
 
         const imageElement = document.createElement("img");
         imageElement.src = liste[i].imageUrl;
@@ -111,12 +113,9 @@ if(window.localStorage.getItem("token")) {
     //Ajout visuel option "modifier"
     const modifierIntro = document.querySelector(".undisplay");
     modifierIntro.className = "modifier";
+    const modifierImageIntro = document.querySelector(".undisplay");
+    modifierImageIntro.className = "modifier";
     const modifierProjets = document.querySelector(".undisplay");
     modifierProjets.className = "modifier";
-    
-    //Ajustement des espacements
-    document.querySelector("#introduction").querySelector("figure").style.margin = "42px 0";
-
-    const titreProjets = document.querySelector("#portfolio");
-    titreProjets.querySelector("div").className = "titreProjets";
+    document.querySelector("#portfolio").querySelector("div").className = "titreProjets";
 };

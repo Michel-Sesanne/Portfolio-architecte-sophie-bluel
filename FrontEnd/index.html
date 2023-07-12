@@ -9,8 +9,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="accueil.js" defer></script>
-	<script src="modale.js" defer></script>
+	<script src="accueil.js" type="module" defer></script>
+	<script src="modale.js" type="module" defer></script>
 	<script src="https://kit.fontawesome.com/02a27855e5.js" crossorigin="anonymous"></script>
 </head>
 
@@ -34,6 +34,7 @@
 			<a href="#" class="undisplay"><i class="fa-regular fa-pen-to-square"></i><p>modifier</p></a>
 		</figure>
 		<article>
+			<a href="#" class="undisplay"><i class="fa-regular fa-pen-to-square"></i><p>modifier</p></a>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
@@ -46,6 +47,7 @@
 			<h2>Mes Projets</h2>
 			<a href="#modal" class="undisplay"><i class="fa-regular fa-pen-to-square"></i><p>modifier</p></a>			
 		</div>
+		
 		<aside id="modal" class="modal" style="display: none;">
 			<div class="modal-wrapper">
 				<i class="fa-solid fa-arrow-left hide"></i>
@@ -61,8 +63,7 @@
 
 				<article class="modal-add undisplay">
 					<h3>Ajout photo</h3>
-					<p class="error-message"></p>
-					
+					<p class="error-message"></p>					
 					<form class="add-work-form" action="http://localhost:5678/api/works" method="post" enctype="multipart/form-data">
 						<div class="add-photo">
 							<div class="photo-preview"></div>
@@ -80,7 +81,6 @@
 						<div class="modal-separation"></div>
 						<input type="submit" value="Valider" class="modal-btn add-work-btn" style="background-color: #A7A7A7;">					
 					</form>
-
 				</article>
 			</div>
 		</aside>
