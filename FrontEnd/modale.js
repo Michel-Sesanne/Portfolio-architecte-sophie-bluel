@@ -42,7 +42,7 @@ modifierProjets.addEventListener("click", openModal);
 (async () => {
     try {
         const reponse = await fetch("http://localhost:5678/api/works");
-        const travaux = await reponse.json();        
+        const travaux = await reponse.json();
         afficherEditionPhoto(travaux);
     } catch (error) {
         console.log(error);
@@ -214,8 +214,10 @@ function verifierFormulaireRempli() {
     // Modifier la couleur du bouton en fonction de l'état du formulaire
     if (photoTelechargee && titreRempli && categorieRemplie) {
       boutonValider.style.backgroundColor = "#1D6154";
+      document.querySelector('.error-message').classList.add("undisplay");
     } else {
       boutonValider.style.backgroundColor = "#A7A7A7";
+      document.querySelector('.error-message').classList.remove("undisplay");
     }
 }
 
@@ -262,11 +264,12 @@ formulaire.addEventListener("submit", (e) => {
       } else {
         afficherErreur("Erreur lors de l'envoi du formulaire.");
       }
-    })
-    //Une fois la réponse correcte obtenue de l'API, on peut ajouter le projet au site
-    .then(data => {        
+    })    
+    .then(data => {      
+        //Une fois la réponse correcte obtenue de l'API, ajouter le projet au site...
         afficherProjets([data]);
         afficherEditionPhoto([data]);
+        //... Et afficher un message de confirmation
         const ajoutProjetValide = '<i class="fa-solid fa-check"></i>'
             + '<p class="add-work-checked">Projet ajouté au site !</p>';
         modaleAjoutPhoto.innerHTML = ajoutProjetValide;
